@@ -1,63 +1,47 @@
 Feature: Test plan sample
-
-
 #  base url: "http://www.petsmart.com/"
-# add basic url:"http://www.petsmart.com/"
 
-#one more commit via rubymine
-
+  #TC-1
   Scenario: Main page functionality - header navigation
-    Then Check that menu item "Dog" contains submenus
+    Then Check that menu Dog category contains Dog submenu
+    Then Check that menu Fish category contains Fish submenu
+    Then Check that menu Bird category contains Bird submenu
+    Then Check that menu Reptile category contains Reptile submenu
+    Then Check that menu Small Pet category contains Small Pet submenu
 
-    Then Check that menu item "Cat" contains submenus
-
-    Then Check that menu item "Fish" contains submenus
-
-    Then Check that menu item "Test" contains submenus
-
-
+  #TC-2
   Scenario: Main page functionality - footer navigation
-    Then Check footer menu "" with items
+    Then Check footer menu Services with items
+    Then Check footer menu Cares with items
+    Then Check footer menu Shop with items
+    Then Check footer menu Education with items
+    Then Check footer menu About with items
 
-    Then Check footer menu "" with items
+  #TC-3-8
+  Scenario Outline: Main page functionality - external links
+    Then Click on <social> icon <verification>
+    Then Verify navigation to <verification>
 
-    Then Check footer menu "" with items
+  Examples:
+    | social      | verification  |
+    | Facebook    | PetSmart      |
+    | Twitter     | Твиттер       |
+    | Google Plus | Google+       |
+    | Instagram   | Instagram     |
+    | Pinterest   | Pinterest     |
+    | YouTube     | YouTube       |
 
-  Scenario: Main page functionality - external links - facebook
-    Then Click on "facebook" icon
-    Then Verify navigation to "Facebook"
-
-  Scenario: Main page functionality - external links - hangouts
-    Then Click on "hangouts" icon
-    Then Verify navigation to "hangouts"
-
-  Scenario: Main page functionality - external links - twitter
-    Then Click on "twitter" icon
-    Then Verify navigation to "twitter"
-
-  Scenario: Main page functionality - external links - instagram
-    Then Click on "instagram" icon
-    Then Verify navigation to "instagram"
-
-  Scenario: Main page functionality - external links - pinterest
-    Then Click on "pinterest" icon
-    Then Verify navigation to "pinterest"
-
-  Scenario: Main page functionality - external links - youtube
-    Then Click on "youtube" icon
-    Then Verify navigation to "youtube"
-
-  Scenario: Main page functionality - upcoming events wrapper
-    Then Print out all upcoming events in wrapper
-
+  #TC-9
   Scenario: Main page functionality - search - valid search
-    Then In search type "smth valid"
-    Then Check that some results returned
+    Then In search type Food
+    Then Check that Food returned
 
+  #TC-10
   Scenario: Main page functionality - search - invalid search
-    Then In search type "smth invalid"
-    Then Check that no results returned (or some message)
+    Then In search type qweweweewqe
+    Then Check that no results returned or some message
 
+  #TC-11
   Scenario: Main page functionality - pet services wrapper
     Then in Pet service click on each item and verify that all promo messages are different
 
